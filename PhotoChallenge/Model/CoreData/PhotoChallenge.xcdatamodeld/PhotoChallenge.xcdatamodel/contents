@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="dateTaken" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="challenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoChallenge" inverseName="photos" inverseEntity="PhotoChallenge" syncable="YES"/>
+    </entity>
+    <entity name="PhotoChallenge" representedClassName="PhotoChallenge" syncable="YES">
+        <attribute name="challenge" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="challengeDomain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="challenge" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PhotoChallenge" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Photo" positionX="-45" positionY="18" width="128" height="90"/>
+    </elements>
+</model>
