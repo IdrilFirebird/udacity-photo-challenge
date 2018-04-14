@@ -50,6 +50,9 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
 //        self.navigationItem.rightBarButtonItem = addButton
 //    }
 //
+    
+    // MARK: createChallengeDelegate
+
     @objc
     func addPhotoChallenge() {
 //        let photoChallenge = PhotoChallenge(challenge: "test", challengeDomain: "DomainTest", context: CoreDataStack.sharedInstance().managedObjectContext)
@@ -66,11 +69,7 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
         // Dispose of any resources that can be recreated.
     }
     
-//    // MARK: createChallengeDelegate
-//
-//    func addPhotoChallenge(newChallenge: PhotoChallenge) {
-//        <#code#>
-//    }
+
     
 
     // MARK: - Table view data source
@@ -96,7 +95,6 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
         return cell
     }
  
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -137,15 +135,22 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "challengeDetailView" {
+//            mapView.deselectAnnotation(sender as? MapPin, animated: false)
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let destController = segue.destination as! PhotoChallengeViewController
+            destController.photoChallenge = fetchResultsController.object(at: indexPath!) as! PhotoChallenge
+            print("go to photo challenge detail view")
+        }
     }
-    */
+ 
     
     // MARK: Core Data
     

@@ -103,7 +103,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="QOg-lI-hbV" kind="show" id="whk-zJ-omV"/>
+                                    <segue destination="nNe-kA-vL9" kind="show" identifier="challengeDetailView" id="Pxi-Ut-D3E"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -150,7 +150,55 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljo-yT-4gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3254" y="30"/>
+            <point key="canvasLocation" x="3903" y="28"/>
+        </scene>
+        <!--Photo Challenge View Controller-->
+        <scene sceneID="35S-oR-06B">
+            <objects>
+                <viewController id="nNe-kA-vL9" customClass="PhotoChallengeViewController" customModule="PhotoChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tm2-SN-NFP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X69-mo-cgJ">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EK9-05-Xdz">
+                                <rect key="frame" x="83" y="133" width="209" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPS-vV-0KK">
+                                <rect key="frame" x="91" y="187" width="193" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l00-NC-wJD">
+                                <rect key="frame" x="91" y="83" width="193" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="anf-9i-4Ji"/>
+                    </view>
+                    <connections>
+                        <outlet property="challengeDomain" destination="EK9-05-Xdz" id="IRV-b1-BG0"/>
+                        <outlet property="dateCreated" destination="mPS-vV-0KK" id="jYR-3C-T6a"/>
+                        <outlet property="imageView" destination="X69-mo-cgJ" id="5nF-0p-VgY"/>
+                        <outlet property="photoChallengeName" destination="l00-NC-wJD" id="0Ef-dK-YfK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnb-a5-A33" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3237.5999999999999" y="28.335832083958024"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RjA-dj-Zsj">

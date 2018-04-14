@@ -12,5 +12,16 @@ import CoreData
 
 @objc(Photo)
 public class Photo: NSManagedObject {
-
+    
+    
+    convenience init(photo: NSData, photoChallenge: PhotoChallenge, context: NSManagedObjectContext) {
+        if let ent = NSEntityDescription.entity(forEntityName: "Photo", in: context) {
+            self.init(entity: ent, insertInto: context)
+            self.challenge = photoChallenge
+            self.dateTaken = NSDate()
+            self.photo = photo
+        } else {
+            fatalError("Unable to find Entity" )
+        }
+    }
 }
