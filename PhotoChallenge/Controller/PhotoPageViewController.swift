@@ -20,21 +20,9 @@ class PhotoPageViewController: UIPageViewController, PageViewContentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-//        if let photoViewController
-        
         updateContent(photos: self.photos)
         dataSource = self
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 
     func viewPhotoController(_ index: Int) -> PhotoViewController? {
         guard let storyboard = storyboard, let page = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController
@@ -44,7 +32,7 @@ class PhotoPageViewController: UIPageViewController, PageViewContentDelegate {
         }
         
         if photos?.count == 0 {
-            page.photo = nil
+            return nil 
         } else {
             page.photo = photos?[index]
             page.photoIndex = index
@@ -62,16 +50,7 @@ class PhotoPageViewController: UIPageViewController, PageViewContentDelegate {
             setViewControllers(vCs, direction: .forward, animated: true, completion: nil)
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

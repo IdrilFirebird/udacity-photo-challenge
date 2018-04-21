@@ -11,7 +11,7 @@ import CoreData
 
 class PhotoChallengeViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
-    @IBOutlet weak var embedView: NSLayoutConstraint!
+    @IBOutlet weak var noPhotoImageView: UIImageView!
     @IBOutlet weak var photoChallengeName: UILabel!
     @IBOutlet weak var challengeDomain: UILabel!
     @IBOutlet weak var dateCreated: UILabel!
@@ -38,6 +38,12 @@ class PhotoChallengeViewController: UIViewController, NSFetchedResultsController
         }
     }
     
+    fileprivate func hideNoPhotoImageView() {
+        if fetchResultsController.fetchedObjects?.count != 0 {
+            noPhotoImageView.isHidden = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,32 +51,18 @@ class PhotoChallengeViewController: UIViewController, NSFetchedResultsController
         
         picker.delegate = self
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showActionSheet))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(showActionSheet))
         self.navigationItem.rightBarButtonItem = addButton
         
         photoChallengeName.text = photoChallenge.challenge
         challengeDomain.text = photoChallenge.challengeDomain
         dateCreated.text = dateToString(photoChallenge.dateCreated! as Date)
         
+        hideNoPhotoImageView()
+        
         
 
     }
-    
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func dateToString(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-YYYY"
-        
-        return formatter.string(from: date)
-    }
-
     
     @objc
     func showActionSheet() {
@@ -115,6 +107,7 @@ class PhotoChallengeViewController: UIViewController, NSFetchedResultsController
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 //        self.performSegue(withIdentifier: "photoPageViewEmbed", sender: self)
         pageViewContentDelegate?.updateContent(photos: fetchResultsController.fetchedObjects as? [Photo])
+        hideNoPhotoImageView()
         print("controller changed content")
     }
 }

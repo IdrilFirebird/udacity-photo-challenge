@@ -27,10 +27,7 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhotoChallenge))
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.leftBarButtonItem = self.editButtonItem
@@ -45,33 +42,17 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
         
     }
     
-//    func addNavBarButton() {
-//        let addButton = UIBarButtonItem(title: "add", style: .plain, target: self, action: #selector(switchEditMode))
-//        self.navigationItem.rightBarButtonItem = addButton
-//    }
-//
-    
     // MARK: createChallengeDelegate
 
     @objc
     func addPhotoChallenge() {
-//        let photoChallenge = PhotoChallenge(challenge: "test", challengeDomain: "DomainTest", context: CoreDataStack.sharedInstance().managedObjectContext)
-//        CoreDataStack.sharedInstance().saveContext()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let createPhotoChallengeController = storyboard.instantiateViewController(withIdentifier: "CreateChallengeViewController") as! CreateChallengeViewController
         self.present(createPhotoChallengeController, animated: true, completion: nil)
         
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,19 +71,16 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "photoChallengeCell", for: indexPath)
 
-         let photoChallenge = fetchResultsController.object(at: indexPath) as! PhotoChallenge
-        cell.detailTextLabel?.text = photoChallenge.challenge
+        let photoChallenge = fetchResultsController.object(at: indexPath) as! PhotoChallenge
+        cell.textLabel?.text =  photoChallenge.challenge
+        cell.detailTextLabel?.text = dateToString(photoChallenge.dateCreated! as Date)
+        if let challengePhotos = photoChallenge.photos?.allObjects as? [Photo] {
+            if let photo = challengePhotos.first {
+                cell.imageView?.image =  UIImage(data: photo.photo! as Data)
+            }
+        }
         return cell
     }
- 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -111,29 +89,13 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
             let photoChallenge = fetchResultsController.object(at: indexPath)
             CoreDataStack.sharedInstance().managedObjectContext.delete(photoChallenge as! NSManagedObject)
             CoreDataStack.sharedInstance().saveContext()
-        /*
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        */
+
         }
         
     }
  
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation

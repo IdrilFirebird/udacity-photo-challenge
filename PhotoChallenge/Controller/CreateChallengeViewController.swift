@@ -28,8 +28,6 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
         
         
         oxfordDict.getDomains(forLanguage: OxfordDict.OxfordLanguage.Englisch) {(result, error) in
-            // TODO: show error alert
-            
             if error == nil {
                 self.domainPickerData = result as! [String]
                 DispatchQueue.main.async {
@@ -37,6 +35,8 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
                     self.domainLoadingFinished()
                 }
                
+            } else {
+                showErrorAlert(viewController: self, message: "Something went wrong while getting Language Domains, pls try again later.")
             }
             
         }
@@ -47,24 +47,29 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
         pickerLabel.text = "Select a domain"
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func creatingChallengeSpinner() {
+        activitySpinner.startAnimating()
+        pickerLabel.text = "Creating Challenge"
+        domainPicker.isHidden = true
     }
     
+
     @IBAction func createChallenge(_ sender: Any) {
+        creatingChallengeSpinner()
         let doamin = domainPickerData[domainPicker.selectedRow(inComponent: 0)]
         oxfordDict.getWordList(forDomain: doamin) {(result, error) in
             if error == nil {
                 let stringList = result as! [String]
                 let randomIndex = Int(arc4random_uniform(UInt32(stringList.count)))
                 
-                let photoChallenge = PhotoChallenge(challenge: stringList[randomIndex], challengeDomain: doamin, context: CoreDataStack.sharedInstance().managedObjectContext)
+                _ = PhotoChallenge(challenge: stringList[randomIndex], challengeDomain: doamin, context: CoreDataStack.sharedInstance().managedObjectContext)
                 CoreDataStack.sharedInstance().saveContext()
                 
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                 }
+            } else {
+                showErrorAlert(viewController: self, message: "Couldn't create new Photo Challenge.")
             }
         }
         
@@ -86,15 +91,4 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
         return domainPickerData[row]
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

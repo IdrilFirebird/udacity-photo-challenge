@@ -39,15 +39,15 @@ class OxfordDict {
         
         taskForGetRequest(urlRequest: request) {(result, error) in
             if (error != nil) {
-                // DO Something with the error
-                
+                self.sendError("Request failed with \(error!)", handler: handler)
+                return
             }
             
             let parsedResult: [String:AnyObject]!
             do {
                 parsedResult = try JSONSerialization.jsonObject(with: result as! Data, options: .allowFragments) as! [String:AnyObject]
             } catch {
-                self.sendError("Could not parse the data as JSON: '\(result)'", handler: handler)
+                self.sendError("Could not parse the data as JSON: '\(result!)'", handler: handler)
                 return
             }
             
@@ -84,8 +84,8 @@ class OxfordDict {
         
         taskForGetRequest(urlRequest: request) {(result, error) in
             if (error != nil) {
-                // DO Something with the error
-                
+                self.sendError("Request failed with \(error!)", handler: handler)
+                return
             }
             
             let parsedResult: [String:AnyObject]!

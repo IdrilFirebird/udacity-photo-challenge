@@ -33,7 +33,7 @@ extension PhotoChallengeViewController: UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             let _ = Photo(photo: UIImagePNGRepresentation(image)! as NSData, photoChallenge: self.photoChallenge, context: CoreDataStack.sharedInstance().managedObjectContext)
             CoreDataStack.sharedInstance().saveContext()
         } else {
