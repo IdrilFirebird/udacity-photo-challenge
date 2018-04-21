@@ -32,8 +32,8 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhotoChallenge))
-        self.navigationItem.leftBarButtonItem = addButton
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         
         do {

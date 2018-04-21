@@ -16,7 +16,9 @@ extension PhotoChallengeViewController: UIImagePickerControllerDelegate, UINavig
         if UIImagePickerController.isSourceTypeAvailable(pickerType) {
             picker.sourceType = pickerType
             picker.allowsEditing = true
-            picker.showsCameraControls = true
+            if (pickerType == .camera) {
+                picker.showsCameraControls = true
+            }
             present(picker, animated: true, completion: nil)
         } else if(pickerType == .camera) {
             let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .alert)

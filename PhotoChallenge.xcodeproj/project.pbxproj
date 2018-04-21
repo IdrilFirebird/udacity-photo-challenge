@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E74DE47208529D80096CACA /* PhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E74DE46208529D80096CACA /* PhotoPageViewController.swift */; };
+		9E74DE4920852CF00096CACA /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E74DE4820852CF00096CACA /* PhotoViewController.swift */; };
 		9E7EE8B2207002500015E8ED /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7EE8B1207002500015E8ED /* ChallengesViewController.swift */; };
 		9E7EE8B62070030D0015E8ED /* ChallengeDetailViewControllerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7EE8B52070030D0015E8ED /* ChallengeDetailViewControllerCollectionViewController.swift */; };
 		9E7EE8BC207005650015E8ED /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7EE8BB207005650015E8ED /* CoreDataStack.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E74DE46208529D80096CACA /* PhotoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPageViewController.swift; sourceTree = "<group>"; };
+		9E74DE4820852CF00096CACA /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		9E7EE8B1207002500015E8ED /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		9E7EE8B52070030D0015E8ED /* ChallengeDetailViewControllerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewControllerCollectionViewController.swift; sourceTree = "<group>"; };
 		9E7EE8BB207005650015E8ED /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				9EE7B8B3207A976A00E0AFE4 /* CreateChallengeViewController.swift */,
 				9EE7B8B5207E98C000E0AFE4 /* PhotoChallengeViewController.swift */,
 				9EE7B8B7208277B900E0AFE4 /* PhotoChallengeViewControllerExtensions.swift */,
+				9E74DE46208529D80096CACA /* PhotoPageViewController.swift */,
+				9E74DE4820852CF00096CACA /* PhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,10 +220,12 @@
 				9EF4A4AD205F070A0086E3FE /* ViewController.swift in Sources */,
 				9E7EE8B62070030D0015E8ED /* ChallengeDetailViewControllerCollectionViewController.swift in Sources */,
 				9EE7B8B6207E98C000E0AFE4 /* PhotoChallengeViewController.swift in Sources */,
+				9E74DE47208529D80096CACA /* PhotoPageViewController.swift in Sources */,
 				9EF4A4AB205F070A0086E3FE /* AppDelegate.swift in Sources */,
 				9E7EE8B2207002500015E8ED /* ChallengesViewController.swift in Sources */,
 				9EF4A4BF2069720B0086E3FE /* OxfordDict.swift in Sources */,
 				9EE7B8B8208277B900E0AFE4 /* PhotoChallengeViewControllerExtensions.swift in Sources */,
+				9E74DE4920852CF00096CACA /* PhotoViewController.swift in Sources */,
 				9E7EE8BF207005E30015E8ED /* PhotoChallenge.xcdatamodeld in Sources */,
 				9EE7B8A92074002500E0AFE4 /* PhotoChallenge+CoreDataProperties.swift in Sources */,
 			);
