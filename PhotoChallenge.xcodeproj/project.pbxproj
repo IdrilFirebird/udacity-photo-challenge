@@ -29,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		9E3B5894208B450600234064 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		9E6553CF208BE04200076131 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E74DE46208529D80096CACA /* PhotoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPageViewController.swift; sourceTree = "<group>"; };
 		9E74DE4820852CF00096CACA /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		9E7EE8B1207002500015E8ED /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		9EF4A49E205F07090086E3FE = {
 			isa = PBXGroup;
 			children = (
+				9E6553CF208BE04200076131 /* README.md */,
 				9EF4A4C0206979BE0086E3FE /* PhotoChallenge.playground */,
 				9EF4A4A9205F070A0086E3FE /* PhotoChallenge */,
 				9EF4A4A8205F070A0086E3FE /* Products */,

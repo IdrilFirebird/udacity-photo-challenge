@@ -77,6 +77,8 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
         if let challengePhotos = photoChallenge.photos?.allObjects as? [Photo] {
             if let photo = challengePhotos.first {
                 cell.imageView?.image =  UIImage(data: photo.photo! as Data)
+            } else {
+                cell.imageView?.image = UIImage(named: "noPhotoImage")
             }
         }
         return cell
