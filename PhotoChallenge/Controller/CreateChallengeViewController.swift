@@ -17,6 +17,8 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
     
     let oxfordDict = OxfordDict()
     var domainPickerData: [String] = []
+    var delegate: CreateChallengeViewControllerDelegate?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,10 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
         domainPicker.dataSource = self
         
         
+        getWordDomains()
+    }
+
+    fileprivate func getWordDomains() {
         oxfordDict.getDomains(forLanguage: OxfordDict.OxfordLanguage.Englisch) {(result, error) in
             if error == nil {
                 self.domainPickerData = result as! [String]
@@ -34,17 +40,22 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
                     self.domainPicker.reloadAllComponents()
                     self.domainLoadingFinished()
                 }
-               
+                
             } else {
-                showErrorAlert(viewController: self, message: "Something went wrong while getting Language Domains, pls try again later.")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true) {
+                    self.delegate?.showCreationError(errorMessage: "Something went wrong while getting Language Domains, pls try again later.")
+                    }
+                }
             }
             
         }
     }
-
+    
     func domainLoadingFinished() {
         activitySpinner.stopAnimating()
         pickerLabel.text = "Select a domain"
+        domainPicker.isHidden = false
     }
     
     func creatingChallengeSpinner() {
@@ -69,7 +80,11 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                showErrorAlert(viewController: self, message: "Couldn't create new Photo Challenge.")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true) {
+                        self.delegate?.showCreationError(errorMessage: "Couldn't create new Photo Challenge, please try again.")
+                    }
+                }
             }
         }
         

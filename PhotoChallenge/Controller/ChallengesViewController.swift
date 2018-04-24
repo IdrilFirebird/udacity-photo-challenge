@@ -9,12 +9,13 @@
 import UIKit
 import CoreData
 
-//protocol CreateChallengeDelegate {
-//    func addPhotoChallenge(newChallenge: PhotoChallenge)
-//}
+protocol CreateChallengeViewControllerDelegate {
+    func showCreationError(errorMessage: String) -> Void
+}
 
 
-class ChallengesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class ChallengesViewController: UITableViewController, NSFetchedResultsControllerDelegate, CreateChallengeViewControllerDelegate {
+
 
     
 
@@ -44,13 +45,11 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
     
     // MARK: createChallengeDelegate
 
-    @objc
-    func addPhotoChallenge() {
+    @objc func addPhotoChallenge() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let createPhotoChallengeController = storyboard.instantiateViewController(withIdentifier: "CreateChallengeViewController") as! CreateChallengeViewController
+        createPhotoChallengeController.delegate = self
         self.present(createPhotoChallengeController, animated: true, completion: nil)
-        
-        
     }
     
     // MARK: - Table view data source
@@ -160,6 +159,12 @@ class ChallengesViewController: UITableViewController, NSFetchedResultsControlle
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    
+    // MARK: CreateChallengeDelegate
+    
+    func showCreationError(errorMessage: String) {
+        showErrorAlert(viewController: self, message: errorMessage)
     }
     
 }

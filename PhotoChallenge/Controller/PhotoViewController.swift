@@ -29,7 +29,6 @@ class PhotoViewController: UIViewController {
             imageView.image = UIImage(data: photo.photo! as Data)
             photoDate.text = dateToString(photo.dateTaken! as Date)
         }
-        // Do any additional setup after loading the view.
     }
     
     
